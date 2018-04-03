@@ -1,0 +1,2 @@
+# sample-resource-service-brokers
+This repo provides sample Open Service Broker samples for providers to use when integrating services with IBM Cloud. These samples conform to the Open Service Broker specification (https://github.com/openservicebrokerapi/servicebroker/blob/v2.12/spec.md). The samples are to be used with the Resource Management Console found here: https://console.bluemix.net/onboarding. Samples included are for Java, Node.js and Ruby.
