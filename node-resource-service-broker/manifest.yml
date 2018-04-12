@@ -1,0 +1,4 @@
+applications:
+- instances: 3
+  memory: 128M
+  command: node testresourceservicebroker.js

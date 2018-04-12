@@ -1,0 +1,12 @@
+{
+    "name": "TestNodeResourceServiceBroker",
+    "version": "0.0.1",
+    "description": "A sample node service to function with the IBM Cloud Resource Broker API",
+    "dependencies":
+    {
+        "basic-auth-connect" : "1.0.0",
+        "body-parser"        : "1.18.2",
+        "express"            : "4.16.3",
+        "uuid"               : "3.2.1"
+    }
+}

@@ -1,0 +1,32 @@
+AbcSize:
+  Enabled: false
+
+BlockLength:
+  Enabled: false
+
+ClassLength:
+  Enabled: false
+
+CyclomaticComplexity:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Encoding:
+  Enabled: false
+
+LineLength:
+  Enabled: false
+
+MethodLength:
+  Enabled: false
+
+ParameterLists:
+  Enabled: false
+
+PerceivedComplexity:
+  Enabled: false
+
+UriEscapeUnescape:
+  Enabled: false

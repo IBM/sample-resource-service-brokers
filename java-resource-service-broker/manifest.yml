@@ -1,0 +1,6 @@
+applications:
+- instances: 3
+  memory: 768M
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  env:
+    JAVA_OPTS: '-Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true'
