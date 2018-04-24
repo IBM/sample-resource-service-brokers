@@ -636,12 +636,12 @@ var catalog = function(request, response)
                     {
                         displayName         : "Test Node Resource Service Broker Display Name",
                         documentationUrl    : baseMetadataUrl + "documentation.html",
-                        imageUrl            : baseMetadataUrl + "servicesample.svg", // Copied from https://github.com/carbon-design-system/carbon-icons/blob/master/src/svg/services.svg
-                        instructionsUrl     : baseMetadataUrl + "servicesample.md",
+                        imageUrl            : baseMetadataUrl + "services.svg", // Copied from https://github.com/carbon-design-system/carbon-icons/blob/master/src/svg/services.svg
+                        instructionsUrl     : baseMetadataUrl + "instructions.html",
                         longDescription     : "Test Node Resource Service Broker Long Description",
                         providerDisplayName : "Company Name",
-                        supportUrl          : "https://console.bluemix.net/unifiedsupport/supportcenter",
-                        termsUrl            : "https://www-03.ibm.com/software/sla/sladb.nsf/sla/saas?OpenDocument"
+                        supportUrl          : baseMetadataUrl + "support.html",
+                        termsUrl            : baseMetadataUrl + "terms.html"
                     },
                     name             : SERVICE_NAME,
                     // TODO - Ensure this value is accurate for your service. Requires PATCH of /v2/service_instances/:instance_id below if true

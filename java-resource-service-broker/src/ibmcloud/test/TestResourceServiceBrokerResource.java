@@ -137,12 +137,12 @@ public final class TestResourceServiceBrokerResource
         final JSONObject resultServiceMetadata = new JSONObject();
         resultServiceMetadata.put("displayName",         "Test Java Resource Service Broker Display Name");
         resultServiceMetadata.put("documentationUrl",    baseMetadataURI + "/public/documentation.html");
-        resultServiceMetadata.put("imageUrl",            baseMetadataURI + "/public/servicesample.svg"); // Copied from https://github.com/carbon-design-system/carbon-icons/blob/master/src/svg/services.svg
-        resultServiceMetadata.put("instructionsUrl",     baseMetadataURI + "/public/servicesample.md");
+        resultServiceMetadata.put("imageUrl",            baseMetadataURI + "/public/services.svg"); // Copied from https://github.com/carbon-design-system/carbon-icons/blob/master/src/svg/services.svg
+        resultServiceMetadata.put("instructionsUrl",     baseMetadataURI + "/public/instructions.html");
         resultServiceMetadata.put("longDescription",     "Test Java Resource Service Broker Long Description");
         resultServiceMetadata.put("providerDisplayName", "Company Name");
-        resultServiceMetadata.put("supportUrl",          "https://console.bluemix.net/unifiedsupport/supportcenter");
-        resultServiceMetadata.put("termsUrl",            "https://www-03.ibm.com/software/sla/sladb.nsf/sla/saas?OpenDocument");
+        resultServiceMetadata.put("supportUrl",          baseMetadataURI + "/public/support.html");
+        resultServiceMetadata.put("termsUrl",            baseMetadataURI + "/public/terms.html");
 
         // Service tags
         final String[] resultTags = new String[3];

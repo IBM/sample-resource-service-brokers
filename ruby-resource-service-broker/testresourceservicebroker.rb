@@ -96,12 +96,12 @@ class TestServiceBroker < Sinatra::Base
             {
               displayName:          'Test Ruby Resource Service Broker Display Name',
               documentationUrl:     "#{request.base_url}/documentation.html",
-              imageUrl:             "#{request.base_url}/servicesample.svg", # Copied from https://github.com/carbon-design-system/carbon-icons/blob/master/src/svg/services.svg
-              instructionsUrl:      "#{request.base_url}/servicesample.md",
+              imageUrl:             "#{request.base_url}/services.svg", # Copied from https://github.com/carbon-design-system/carbon-icons/blob/master/src/svg/services.svg
+              instructionsUrl:      "#{request.base_url}/instructions.html",
               longDescription:      'Test Ruby Resource Service Broker Long Description',
               providerDisplayName:  'Company Name',
-              supportUrl:           'https://console.bluemix.net/unifiedsupport/supportcenter',
-              termsUrl:             'https://www-03.ibm.com/software/sla/sladb.nsf/sla/saas?OpenDocument'
+              supportUrl:           "#{request.base_url}/support.html",
+              termsUrl:             "#{request.base_url}/terms.html"
             },
             name:             SERVICE_NAME,
             # TODO: Ensure this value is accurate for your service. Requires PATCH of /v2/service_instances/:instance_id below if true
