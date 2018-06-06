@@ -5,7 +5,7 @@
     "dependencies":
     {
         "basic-auth-connect" : "1.0.0",
-        "body-parser"        : "1.18.2",
+        "body-parser"        : "1.18.3",
         "express"            : "4.16.3",
         "uuid"               : "3.2.1"
     }
