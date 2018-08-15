@@ -236,12 +236,12 @@ public final class TestResourceServiceBrokerResource
         }
         else
         {
-            final URI dashboard_uri = new URI("https",
-                                              httpServletRequest.getServerName(),
-                                              httpServletRequest.getContextPath() + "/dashboard/" + URLEncoder.encode(instanceId, "UTF-8"),
-                                              null);
+            final URI dashboardBaseURI = new URI("https",
+                                                 httpServletRequest.getServerName(),
+                                                 httpServletRequest.getContextPath() + "/dashboard/",
+                                                 null);
 
-            result.put("dashboard_url", dashboard_uri.toString());
+            result.put("dashboard_url", dashboardBaseURI + URLEncoder.encode(instanceId, "UTF-8"));
 
             // TODO - If the service instance is requested as asynchronous (and time is needed to provision beyond the standard timeout)
             if (ASYNC_SUPPORTED && acceptsIncomplete)
