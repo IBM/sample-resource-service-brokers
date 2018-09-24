@@ -478,8 +478,10 @@ var accessToken = function(request, response, tokenEndpoint, code, callback)
     doHTTP(tokenEndpoint, "POST", authorization, "application/x-www-form-urlencoded", content, response, localCallback);
 };
 
-var apiKeyToken = function(request, response, tokenEndpoint, accessTokenResult, callback)
+var apiKeyToken = function(request, response, accessTokenResult, callback)
 {
+    var urlString = IAM_ENDPOINT + "/identity/token";
+
     var content = querystring.stringify(
     {    
         "apikey"        : API_KEY,
@@ -510,7 +512,7 @@ var apiKeyToken = function(request, response, tokenEndpoint, accessTokenResult, 
         }
     };
 
-    doHTTP(tokenEndpoint, "POST", null, "application/x-www-form-urlencoded", content, response, localCallback);
+    doHTTP(urlString, "POST", null, "application/x-www-form-urlencoded", content, response, localCallback);
 };
 
 var manageServiceInstance = function(request, response, accessToken, apiToken, instanceId, callback)
@@ -1172,7 +1174,7 @@ var sso_dashboard = function(request, response)
             }
             else
             {
-                apiKeyToken(request, response, tokenEndpointResult, accessTokenResult, apiKeyTokenCallback);
+                apiKeyToken(request, response, accessTokenResult, apiKeyTokenCallback);
             }
         };
 

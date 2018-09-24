@@ -79,7 +79,6 @@ public final class TestResourceServiceBrokerResource
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String get(@Context final HttpServletRequest httpServletRequest)
-           throws JSONException
     {
         LOGGER.info("GET / request headers: " + headersString(httpServletRequest));
 
@@ -582,15 +581,13 @@ public final class TestResourceServiceBrokerResource
     {
         LOGGER.info("GET /sso_dashboard?code=" + code + "&state=" + state + " request headers: " + headersString(httpServletRequest));
 
-        final String tokenEndpoint = getIAMIdentityEndpoint("token_endpoint");
-
-        final String accessToken = getAccessToken(tokenEndpoint,
+        final String accessToken = getAccessToken(getIAMIdentityEndpoint("token_endpoint"),
                                                   code,
                                                   getSSORedirectURI(httpServletRequest));
 
         if (accessToken != null)
         {
-            final String apiKeyToken = getAPIKeyToken(tokenEndpoint);
+            final String apiKeyToken = getAPIKeyToken();
 
             if (apiKeyToken != null)
             {
@@ -937,7 +934,7 @@ public final class TestResourceServiceBrokerResource
         {
             throw new WebApplicationException(createJSONResponse(Status.INTERNAL_SERVER_ERROR,
                                                                  "Unable to access url " +
-                                                                 IAM_IDENTITY_ENDPOINT            +
+                                                                 IAM_IDENTITY_ENDPOINT   +
                                                                  "."));
         }
 
@@ -978,14 +975,16 @@ public final class TestResourceServiceBrokerResource
         return accessToken;
     }
 
-    private static String getAPIKeyToken(final String tokenEndpoint)
+    private static String getAPIKeyToken()
             throws JSONException
     {
+        final String urlString = IAM_ENDPOINT + "/identity/token";
+
         final String form = "apikey=" + API_KEY                                  +
                             "&grant_type=urn:ibm:params:oauth:grant-type:apikey" +
                             "&response_type=cloud_iam";
 
-        final JSONObject jsonObject = doPost(tokenEndpoint,
+        final JSONObject jsonObject = doPost(urlString,
                                              null,
                                              MediaType.APPLICATION_FORM_URLENCODED_TYPE,
                                              form);

@@ -549,7 +549,7 @@ class TestServiceBroker < Sinatra::Base
 
     token_endpoint = iam_identity_endpoint('token_endpoint')
     access_token   = access_token(token_endpoint, code)
-    api_key_token  = api_key_token(token_endpoint)
+    api_key_token  = api_key_token()
 
     content_type(:html)
     if access_token && api_key_token && manage_service_instance?(access_token, api_key_token, state)
@@ -629,6 +629,7 @@ class TestServiceBroker < Sinatra::Base
 
   def check_authorization
     return if authorized?
+
     headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
     halt(401, { description: 'Not authorized' }.to_json)
   end
@@ -644,6 +645,7 @@ class TestServiceBroker < Sinatra::Base
 
   def check_media_type
     return if request.media_type == 'application/json'
+
     msg = 'Content-Type must be application/json'
     LOGGER.debug(msg)
     halt(415, { description: msg }.to_json)
@@ -651,6 +653,7 @@ class TestServiceBroker < Sinatra::Base
 
   def check_accept
     return if request.accept?('application/json')
+
     msg = 'Accept type must be application/json'
     LOGGER.debug(msg)
     halt(406, { description: msg }.to_json)
@@ -833,12 +836,14 @@ class TestServiceBroker < Sinatra::Base
     access_token
   end
 
-  def api_key_token(token_endpoint)
+  def api_key_token
+    url_string = "#{IAM_ENDPOINT}/identity/token"
+
     content = URI.encode_www_form('apikey'        => API_KEY,
                                   'grant_type'    => 'urn:ibm:params:oauth:grant-type:apikey',
                                   'response_type' => 'cloud_iam')
 
-    json = do_http(token_endpoint, Net::HTTP::Post, nil, nil, nil, 'application/x-www-form-urlencoded', content)
+    json = do_http(url_string, Net::HTTP::Post, nil, nil, nil, 'application/x-www-form-urlencoded', content)
 
     return nil if json.nil?
 
