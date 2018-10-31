@@ -48,7 +48,7 @@ ASYNC_REQUIRED = false
 # TODO: Whether service keys are supported or not
 SERVICE_KEYS_SUPPORTED = true
 
-IAM_ENDPOINT          = 'https://iam.bluemix.net'.freeze
+IAM_ENDPOINT          = 'https://iam.cloud.ibm.com'.freeze
 IAM_IDENTITY_ENDPOINT = "#{IAM_ENDPOINT}/identity/.well-known/openid-configuration".freeze
 
 class TestServiceBroker < Sinatra::Base

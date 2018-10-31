@@ -34,7 +34,7 @@ var ASYNC_REQUIRED = false;
 // TODO - Whether service keys are supported or not
 var SERVICE_KEYS_SUPPORTED = true;
 
-var IAM_ENDPOINT          = "https://iam.bluemix.net";
+var IAM_ENDPOINT          = "https://iam.cloud.ibm.com";
 var IAM_IDENTITY_ENDPOINT = IAM_ENDPOINT + "/identity/.well-known/openid-configuration";
 
 var PORT = process.env.PORT || 3000;

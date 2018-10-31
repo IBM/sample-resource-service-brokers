@@ -67,7 +67,7 @@ public final class TestResourceServiceBrokerResource
     // TODO - Whether service keys are supported or not
     private static final boolean SERVICE_KEYS_SUPPORTED = true;
 
-    private static final String IAM_ENDPOINT          = "https://iam.bluemix.net";
+    private static final String IAM_ENDPOINT          = "https://iam.cloud.ibm.com";
     private static final String IAM_IDENTITY_ENDPOINT = IAM_ENDPOINT + "/identity/.well-known/openid-configuration";
 
     private static final Logger LOGGER = Logger.getLogger(TestResourceServiceBrokerResource.class.getName());
