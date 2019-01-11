@@ -3,22 +3,22 @@ GEM
   specs:
     mustermann (1.0.3)
     rack (2.0.6)
-    rack-protection (2.0.4)
+    rack-protection (2.0.5)
       rack
-    sinatra (2.0.4)
+    sinatra (2.0.5)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.4)
+      rack-protection (= 2.0.5)
       tilt (~> 2.0)
-    tilt (2.0.8)
+    tilt (2.0.9)
     uuidtools (2.1.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  sinatra (= 2.0.4)
+  sinatra (= 2.0.5)
   uuidtools (= 2.1.5)
 
 BUNDLED WITH
-   1.17.1
+   1.17.3
