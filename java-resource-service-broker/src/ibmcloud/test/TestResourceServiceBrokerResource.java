@@ -442,10 +442,16 @@ public final class TestResourceServiceBrokerResource
 
         final JSONObject context        = getInputJSONObject(jsonObject, "context", true);
         final JSONObject parameters     = getInputJSONObject(jsonObject, "parameters", false); // Optional
-        final String planId             = getInputString(jsonObject, "plan_id", true);
-        final JSONObject previousValues = getInputJSONObject(jsonObject, "previous_values", true);
-        final String previousPlanId     = getInputString(previousValues, "plan_id", true);
         final String serviceId          = getInputString(jsonObject, "service_id", true);
+        final String planId             = getInputString(jsonObject, "plan_id", false); // Optional
+        final JSONObject previousValues = getInputJSONObject(jsonObject, "previous_values", false); // Optional
+
+        String previousPlanId = null;
+
+        if (previousValues != null)
+        {
+            previousPlanId = getInputString(previousValues, "plan_id", true);
+        }
 
         final String platform = getInputString(context, "platform", true);
 
@@ -626,8 +632,8 @@ public final class TestResourceServiceBrokerResource
         validateAuthorization(httpServletRequest);
 
         final boolean enabled    = getInputBoolean(jsonObject, "enabled", true).booleanValue();
-        final String initiatorId = getInputString(jsonObject, "initiator_id", true);
-        final String reasonCode  = getInputString(jsonObject, "reason_code", true);
+        final String initiatorId = getInputString(jsonObject, "initiator_id", false); // Optional
+        final String reasonCode  = getInputString(jsonObject, "reason_code", false); // Optional
 
         // TODO - Do your actual work here
 
@@ -809,7 +815,7 @@ public final class TestResourceServiceBrokerResource
             return null;
         }
 
-        if (string.trim().isEmpty())
+        if ((required) && (string.trim().isEmpty()))
         {
             throw new WebApplicationException(createJSONResponse(Status.BAD_REQUEST,
                                                                  name + " cannot be empty"));

@@ -242,7 +242,7 @@ var getString = function(json, name, required, response)
     {
         text = name + " must be string";
     }
-    else if (value.trim().length == 0)
+    else if ((required) && (value.trim().length == 0))
     {
         text = name + " cannot be empty";
     }
@@ -984,10 +984,16 @@ var update = function(request, response)
 
         var context        = getJSON(json, "context", true, response);
         var parameters     = getJSON(json, "parameters", false, response); // Optional
-        var planId         = getString(json, "plan_id", true, response);
-        var previousValues = getJSON(json, "previous_values", true, response);
-        var previousPlanId = getString(previousValues, "plan_id", true, response);
         var serviceId      = getString(json, "service_id", true, response);
+        var planId         = getString(json, "plan_id", false, response); // Optional
+        var previousValues = getJSON(json, "previous_values", false, response); // Optional
+
+        var previousPlanId = null;
+
+        if (previousValues != null)
+        {
+            previousPlanId = getString(previousValues, "plan_id", true, response);
+        }
 
         var platform = getString(context, "platform", true, response);
 
@@ -1212,8 +1218,8 @@ var enable = function(request, response)
         var json = JSON.parse(s);
 
         var enabled    = getBoolean(json, "enabled", true, response);
-        var intiatorId = getString(json, "initiator_id", true, response);
-        var reasonCode = getString(json, "reason_code", true, response);
+        var intiatorId = getString(json, "initiator_id", false, response); // Optional
+        var reasonCode = getString(json, "reason_code", false, response); // Optional
 
         // TODO - Do your actual work here
 

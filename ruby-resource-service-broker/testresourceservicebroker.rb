@@ -421,10 +421,15 @@ class TestServiceBroker < Sinatra::Base
 
       context          = get_hash(json, 'context')
       parameters       = get_hash(json, 'parameters', false) # Optional
-      plan_id          = get_string(json, 'plan_id')
-      previous_values  = get_hash(json, 'previous_values')
-      previous_plan_id = get_string(previous_values, 'plan_id')
       service_id       = get_string(json, 'service_id')
+      plan_id          = get_string(json, 'plan_id', false) # Optional
+      previous_values  = get_hash(json, 'previous_values', false) # Optional
+
+      previous_plan_id = nil
+
+      if previous_values
+        previous_plan_id = get_string(previous_values, 'plan_id')
+      end
 
       platform = get_string(context, 'platform')
 
@@ -580,8 +585,8 @@ class TestServiceBroker < Sinatra::Base
       json = JSON.parse(body)
 
       enabled      = get_boolean(json, 'enabled')
-      initiator_id = get_string(json, 'initiator_id')
-      reason_code  = get_string(json, 'reason_code')
+      initiator_id = get_string(json, 'initiator_id', false) # Optional
+      reason_code  = get_string(json, 'reason_code', false) # Optional
 
       # TODO: Do your actual work here
 
@@ -751,7 +756,7 @@ class TestServiceBroker < Sinatra::Base
       halt(400, { description: msg }.to_json)
     end
 
-    if string.strip.empty?
+    if required && string.strip.empty?
       msg = "#{name} cannot be empty"
       LOGGER.debug(msg)
       halt(400, { description: msg }.to_json)
