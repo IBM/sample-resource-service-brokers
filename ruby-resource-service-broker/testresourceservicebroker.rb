@@ -16,6 +16,7 @@ require 'webrick/version'
 webrick_options =
   {
     DoNotReverseLookup: true,
+    Host:               '0.0.0.0',
     # Logger:             WEBrick::Log::new($stderr, WEBrick::Log::DEBUG),
     Port:               ENV['PORT'] || 3000,
     ServerSoftware:     "WEBrick/#{WEBrick::VERSION} (Ruby/#{RUBY_VERSION}/#{RUBY_RELEASE_DATE})", # Default value includes OpenSSL version which is a security exposure
