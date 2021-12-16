@@ -912,4 +912,4 @@ end
 
 %w[TERM INT].each { |sig| trap(sig) { exit! } }
 
-Rack::Handler::WEBrick.run(TestServiceBroker, webrick_options)
+Rack::Handler::WEBrick.run(TestServiceBroker, **webrick_options)

@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'sinatra', '2.0.8.1'
-gem 'uuidtools', '2.1.5'
+gem 'sinatra', '2.1.0'
+gem 'uuidtools', '2.2.0'
+gem 'webrick', '1.7.0'
