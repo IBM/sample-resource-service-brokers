@@ -9,7 +9,7 @@ var http             = require("http");
 var https            = require("https");
 var querystring      = require("querystring");
 var url              = require("url");
-var uuid             = require("uuid/v4");
+const { v4: uuidv4 } = require('uuid');
 
 // TODO - This service name must be unique within an IBM Cloud environment's set of service offerings
 var SERVICE_NAME = "testnoderesourceservicebrokername";
@@ -843,8 +843,8 @@ var bind = function(request, response)
         {
             // TODO - Do your actual work here
 
-            var generatedUserid   = uuid();
-            var generatedPassword = uuid();
+            var generatedUserid   = uuidv4();
+            var generatedPassword = uuidv4();
 
             result = 
             {
