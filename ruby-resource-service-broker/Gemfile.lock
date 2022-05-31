@@ -3,14 +3,14 @@ GEM
   specs:
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    rack (2.2.3)
-    rack-protection (2.1.0)
+    rack (2.2.3.1)
+    rack-protection (2.2.0)
       rack
     ruby2_keywords (0.0.5)
-    sinatra (2.1.0)
+    sinatra (2.2.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
-      rack-protection (= 2.1.0)
+      rack-protection (= 2.2.0)
       tilt (~> 2.0)
     tilt (2.0.10)
     uuidtools (2.2.0)
@@ -20,9 +20,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  sinatra (= 2.1.0)
+  sinatra (= 2.2.0)
   uuidtools (= 2.2.0)
   webrick (= 1.7.0)
 
 BUNDLED WITH
-   2.2.33
+   2.3.14
